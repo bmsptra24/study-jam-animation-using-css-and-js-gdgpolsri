@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Portfolio</title>
+    <style>
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .box {
+        width: 5rem;
+        height: 5rem;
+        transition: transform 0.5s ease-in-out;
+      }
+      .animate {
+        transform: translateX(200px);
+      }
+
+      #box1 {
+        background-color: red;
+      }
+
+      #box2 {
+        background-color: blue;
+      }
+
+      #box3 {
+        background-color: green;
+      }
+
+      #box4 {
+        background-color: yellow;
+      }
+
+      #box5 {
+        background-color: purple;
+      }
+
+      button {
+        margin-top: 20px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box" id="box1">Box 1</div>
+      <div class="box" id="box2">Box 2</div>
+      <div class="box" id="box3">Box 3</div>
+      <div class="box" id="box4">Box 4</div>
+      <div class="box" id="box5">Box 5</div>
+    </div>
+
+    <button id="animateBox1">Pindahkan Box 1</button>
+    <button id="animateButton">Animate Boxes</button>
+
+    <script>
+      // ===============
+      // Contoh 1
+
+      const btnAnimateBox1 = document.getElementById('animateBox1')
+      const box1 = document.getElementById('box1')
+
+      btnAnimateBox1.onclick = () => {
+        box1.classList.toggle('animate')
+      }
+
+      // ===============
+      // Contoh 2
+
+      // Select the button and all the boxes
+      const animateButton = document.querySelector('#animateButton')
+      const boxes = document.querySelectorAll('.box')
+
+      // Add event listener to the button
+      animateButton.addEventListener('click', async () => {
+        for (const box of boxes) {
+          // Manipulate the element
+          box.classList.toggle('animate')
+          await new Promise((resolve) => setTimeout(resolve, 300))
+        }
+      })
+    </script>
+  </body>
+</html>
