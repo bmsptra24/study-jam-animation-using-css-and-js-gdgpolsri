@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rive Hello World</title>
+  </head>
+  <body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+
+    <script src="https://unpkg.com/@rive-app/canvas"></script>
+    <script>
+      const r = new rive.Rive({
+        src: '/gdgpolsri.riv',
+        canvas: document.getElementById('canvas'),
+        autoplay: false,
+        // artboard: "Arboard", // Optional. If not supplied the default is selected
+        stateMachines: 'State Machine 1',
+        onLoad: () => {
+          // Ensure the drawing surface matches the canvas size and device pixel ratio
+          r.resizeDrawingSurfaceToCanvas()
+        },
+      })
+
+      const trigger = document.getElementById('canvas')
+      trigger.onclick = () => {
+        r.play('State Machine 1')
+      }
+    </script>
+  </body>
+</html>
